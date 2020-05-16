@@ -6,9 +6,11 @@
 package com.softwareplumbers.authz;
 
 import com.softwareplumbers.authz.AuthzExceptions.InvalidPath;
+import com.softwareplumbers.authz.impl.FederatedAuthorizationService;
 import com.softwareplumbers.authz.impl.PublicAuthorizationService;
 import com.softwareplumbers.common.abstractquery.Query;
 import com.softwareplumbers.common.immutablelist.AbstractImmutableList;
+import java.util.stream.Stream;
 import javax.json.JsonObject;
 
 /** Authorization service.
@@ -79,5 +81,19 @@ public interface AuthorizationService<Type extends Enum<Type>, Role extends Enum
      */
     public static <T extends Enum<T>, R extends Enum<R>, P extends AbstractImmutableList<?,P>> AuthorizationService<T,R,P> publicAuthz() {
         return new PublicAuthorizationService<>();
+    }
+    
+    /** Federate authorization services.
+     *
+     * @param <T> Type of objects handled
+     * @param <R> Roles handled
+     * @param <P> Path type
+     * @param services
+     * @return A public authorization service
+     */
+    public static <T extends Enum<T>, R extends Enum<R>, P extends AbstractImmutableList<?,P>> AuthorizationService<T,R,P> federate(AuthorizationService<T,R,P>... services) {
+        FederatedAuthorizationService<T,R,P> service = new FederatedAuthorizationService<>();
+        Stream.of(services).forEachOrdered(s->service.addAuthorizationService(s));
+        return service;
     }
 }
