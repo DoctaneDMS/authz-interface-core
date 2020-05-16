@@ -6,6 +6,7 @@
 package com.softwareplumbers.authz;
 
 import com.softwareplumbers.authz.AuthzExceptions.InvalidPath;
+import com.softwareplumbers.authz.impl.PublicAuthorizationService;
 import com.softwareplumbers.common.abstractquery.Query;
 import com.softwareplumbers.common.immutablelist.AbstractImmutableList;
 import javax.json.JsonObject;
@@ -68,4 +69,15 @@ public interface AuthorizationService<Type extends Enum<Type>, Role extends Enum
      * @return application specific metadata for that user Id 
      */
     JsonObject getUserMetadata(String userId);
+    
+    /** Get a public authorization service.
+     *
+     * @param <T> Type of objects handled
+     * @param <R> Roles handled
+     * @param <P> Path type
+     * @return A public authorization service
+     */
+    public static <T extends Enum<T>, R extends Enum<R>, P extends AbstractImmutableList<?,P>> AuthorizationService<T,R,P> publicAuthz() {
+        return new PublicAuthorizationService<>();
+    }
 }
