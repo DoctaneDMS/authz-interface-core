@@ -12,10 +12,10 @@ abstract operations on authorization system.
 
 This package contains a generic implementation the authorization service APIs. In particlar:
 
-    * PublicAuthorizationService is a dummy service which always permits access to any resource
-    * LocalAuthoriztionService permits access to any resource if the user in in a locally defined list
-    * FederatedAuthorizationService permits access a resource if permitted by one of a set of underlying
-      authorization services.
+* PublicAuthorizationService is a dummy service which always permits access to any resource
+* LocalAuthoriztionService permits access to any resource if the user in in a locally defined list
+* FederatedAuthorizationService permits access a resource if permitted by one of a set of underlying
+  authorization services.
 
 ## Overview
 
