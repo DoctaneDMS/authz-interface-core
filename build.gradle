@@ -5,7 +5,7 @@ buildscript {
 }
 
 plugins {
-  id "org.jdrupes.mdoclet" version "1.0.5"
+  id "org.jdrupes.mdoclet" version "1.0.10"
 }
 
 String propValue(String propName, String defValue) {
@@ -76,8 +76,8 @@ sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
 dependencies {
-    compile group: 'com.softwareplumbers.oss', name:'abstract-query-java', version:'0.3.7'
-    compile group: 'com.softwareplumbers.oss', name:'pipedstream', version:'0.0.1'
+    compile group: 'com.softwareplumbers.oss', name:'abstract-query-java', version:'0.4.14'
+    compile group: 'com.softwareplumbers.oss', name:'pipedstream', version:'0.0.2'
     compile group: 'javax.json', name: 'javax.json-api', version: '1.0'
     compile group: 'org.slf4j', name: 'slf4j-ext', version: '1.7.31-SNAPSHOT'
     compile group: 'org.slf4j', name: 'slf4j-api', version: '1.7.31-SNAPSHOT'
